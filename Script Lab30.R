@@ -1,0 +1,42 @@
+#-------------------LABORATORIO 30--------------------------
+#MERGE  FUNDIR TABLAS
+
+#Instalar data.table
+install.packages("data.table")
+
+#Llamar librería
+library(data.table)
+
+#Cargar las rutas de los datos
+choose.files()
+
+#Generamos la variable green.products
+#Proviene de archivo en csv, se copia la ruta del archivo green products.csv
+green.products <- read.csv("C:\\Users\\Lenovo\\Documents\\GitHub\\LAB-30\\L30 Input\\green products.csv")
+
+#Para visualizar
+green.products
+
+#Generamos la variable all.products
+#Proviene de archivo en csv, se copia la ruta del archivo COMPLETE_YEARS_PRODUCTS.csv
+all.products <- read.csv("C:\\Users\\Lenovo\\Documents\\GitHub\\LAB-30\\L30 Input\\COMPLETE_YEARS_PRODUCTS.csv")
+
+#Se leen ambos elementos como una tabla
+green.products <- as.data.table(green.products)
+all.products <- as.data.table(all.products)
+
+#Fundir variables mediante un datatable llamado merge.allproducts
+#Será la fundición (merge) de la base all.products y green.products
+#El ID de unión será by=product_code
+merge.allproducts=merge(all.products, green.products, by="product_code")
+
+#Generar dataframe merge.full que proviene de merge(all.products, green.products, by="product_code"
+#Pero debe fundir absolutamente todo all.x = T
+#Los espacios vacios los identificará con NA
+merge.full=merge(all.products, green.products, by="product_code", all.x = T)
+
+#Para exportar
+write.csv(merge.full, file = "merge.full.csv")
+
+
+#--------------------FIN DE LABORATORIO 30-----------------------------------

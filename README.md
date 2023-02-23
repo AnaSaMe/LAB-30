@@ -1,2 +1,2 @@
-# LAB-30a
- Merge (Fundir tablas)
+# LAB-30
+ Merge (Agrupamiento)
